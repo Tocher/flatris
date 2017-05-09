@@ -1,21 +1,49 @@
 {
   "name": "flatris",
-  "version": "0.0.1",
-  "description": "Web-based Tetris clone in Cosmos/React",
+  "license": "MIT",
+  "version": "1.0.0",
+  "description": "Tetris for millennials",
   "repository": {
     "type": "git",
-    "url": "https://github.com/skidding/flatris.git"
+    "url": "https://github.com/tocher/flatris.git"
   },
   "dependencies": {
-    "cosmos-js": "~0.1.1"
+    "lodash": "^4.17.4",
+    "raf": "^3.3.0",
+    "react": "^15.4.2",
+    "react-dom": "^15.4.2",
+    "react-redux": "^5.0.2",
+    "react-redux-layout": "^0.1.0",
+    "redux": "^3.6.0",
+    "redux-thunk": "^2.2.0",
+    "styled-components": "^1.4.3",
+    "sw-precache": "^5.0.0"
   },
   "devDependencies": {
-    "gulp": "~3.6.2",
-    "gulp-concat": "~2.2.0",
-    "gulp-rename": "~1.2.0",
-    "gulp-uglify": "~0.3.0",
-    "gulp-react": "~0.3.3",
-    "gulp-less": "~1.2.3"
+    "prettier": "^0.18.0",
+    "pushstate-server": "^2.2.1",
+    "react-component-playground": "^2.0.0-beta.12",
+    "react-cosmos": "^2.0.0-beta.12",
+    "react-cosmos-normalize-props-proxy": "2.0.0-beta.11",
+    "react-cosmos-redux-proxy": "2.0.0-beta.11",
+    "react-cosmos-telescope": "^2.0.0-beta.12",
+    "react-cosmos-webpack": "^2.0.0-beta.12",
+    "react-scripts": "0.9.5",
+    "webpack": "1.14.0"
   },
-  "main": "build/flatris.js"
+  "scripts": {
+    "start": "react-scripts start",
+    "gen-service-worker": "sw-precache --config=sw-precache-config.js",
+    "build": "react-scripts build && npm run gen-service-worker",
+    "update-docs": "rm -rf docs/* && cp -r build/* docs",
+    "start-docs": "npm run update-docs && pushstate-server docs",
+    "format": "prettier --write 'src/**/*.{js,jsx}' '*.{js,jsx}' 'cosmos/**/*.{js,jsx}' --single-quote",
+    "test": "npm run format && CI=y react-scripts test --env=jsdom",
+    "eject": "react-scripts eject",
+    "cosmos": "NODE_ENV=development cosmos"
+  },
+  "eslintConfig": {
+    "extends": "react-app"
+  },
+  "homepage": "."
 }
